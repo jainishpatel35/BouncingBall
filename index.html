@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bouncing Ball</title>
+<style type='text/css'>
+h1{
+	text-align: center;
+	color: #00bfff;
+}
+h1:hover {
+cursor:hand;
+color: #a30002;
+}
+}
+</style>
+<script type="text/javascript">
+var context;
+
+var dy= 4;
+var dx=4;
+var x=150;
+var y=300;
+var ac=true;
+
+
+
+function draw()
+{
+   context= myCanvas.getContext('2d');
+   
+   context.clearRect(0,0,300,300);
+   context.beginPath();
+	
+   if ( x<0 || x>300)
+   {
+   		context.fillStyle="#0000ff";
+		ac=false;
+		}
+   else if ( y<0 || y>300)
+   {
+     	context.fillStyle="#ff0000";
+		ac=false;
+		}
+	else if (ac==true)
+	{
+		context.fillStyle="#ff0000";
+		}
+	
+	
+   
+   context.arc(x,y,20,0,Math.PI*2,true);
+   context.closePath();
+   context.fill();
+  
+   if ( x<0 || x>300)
+      dx=-dx;
+   
+   if ( y<0 || y>300)
+      dy=-dy;
+   
+   x-=dx;
+   y-=dy;
+}
+	setInterval(draw,30); 
+</script>
+
+</head>
+
+<body>
+
+
+<h1>Bouncing Ball</h1>
+
+<div id="container" align="center">
+   
+	<canvas id="myCanvas" width="300" height="300">
+    </canvas>
+
+</div>
+
+
+</body>
+</html>
